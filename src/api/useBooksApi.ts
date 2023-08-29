@@ -267,6 +267,9 @@ export const useCurrentLoansCountApi = (props: { isBookCheckedOut: boolean }): u
         setIsLoadingCurrentLoansCount(false);
       })
     }
+    else {
+      setIsLoadingCurrentLoansCount(false)
+    }
   }, [authState, props.isBookCheckedOut])
 
   return { currentLoansCount, isLoadingCurrentLoansCount, currentLoanCountHttpError }
@@ -293,6 +296,9 @@ export const useIsBookCheckout = (props: isBookCheckoutProps): useIsBookCheckedO
         setIsLoadingIsBookCheckedOut(false);
       })
     }
+    else {
+      setIsLoadingIsBookCheckedOut(false);
+    }
   }, [authState])
   return { isLoadingIsBookCheckedOut, isBookCheckedOutHttpError }
 }
@@ -317,6 +323,9 @@ export const useHasUserLeftReview = (props: hasUserLeftReviewProps): useHasUserL
         setIsLoadingHasUserLeftReviewHttpError(error.message);
         setIsLoadingHasUserLeftReview(false);
       })
+    }
+    else {
+      setIsLoadingHasUserLeftReview(false);
     }
   }, [])
 

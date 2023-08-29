@@ -3,7 +3,7 @@ import { useOktaAuth } from '@okta/okta-react';
 import { useGetSingleBookApi, useCurrentLoansCountApi, useIsBookCheckout, useHasUserLeftReview, postReviewApi, checkOutBookApi } from '../../api/useBooksApi';
 import SpinnerLoading from '../Utils/SpinnerLoading';
 import StarReview from '../Utils/StarReview';
-import CheckoutAndReviewBox from './CheckoutAndReviewBox';
+import CheckoutAndReviewBox, { CheckoutAndReviewBoxMobile } from './CheckoutAndReviewBox';
 import LatestReviews from './LatestReviews';
 
 const BookCheckoutPage = () => {
@@ -20,8 +20,7 @@ const BookCheckoutPage = () => {
   })
   const { currentLoansCount, isLoadingCurrentLoansCount, currentLoanCountHttpError } = useCurrentLoansCountApi({ isBookCheckedOut: isBookCheckedOut })
   const { isLoadingIsBookCheckedOut, isBookCheckedOutHttpError } = useIsBookCheckout({ bookId: bookId, setIsBookCheckedOut: setIsBookCheckedOut })
-  const { isLoadingHasUserLeftReview, isLoadingHasUserLeftReviewHttpError } =
-    useHasUserLeftReview({ bookId: bookId, setHasUserLeftReview: setHasUserLeftReview });
+  const { isLoadingHasUserLeftReview, isLoadingHasUserLeftReviewHttpError } = useHasUserLeftReview({ bookId: bookId, setHasUserLeftReview: setHasUserLeftReview });
 
   const checkoutBookHandler = () => {
     checkOutBookApi({
@@ -39,8 +38,7 @@ const BookCheckoutPage = () => {
   }
 
 
-  if (isLoading || isLoadingReview || isLoadingCurrentLoansCount || isLoadingIsBookCheckedOut
-    || isLoadingHasUserLeftReview) {
+  if (isLoading || isLoadingReview || isLoadingCurrentLoansCount || isLoadingIsBookCheckedOut || isLoadingHasUserLeftReview) {
     return (
       <SpinnerLoading />
     )
@@ -103,7 +101,7 @@ const BookCheckoutPage = () => {
               <StarReview rating={totalStars} size={32} />
             </div>
           </div>
-          <CheckoutAndReviewBox book={book} mobile={false} currentLoansCount={currentLoansCount}
+          <CheckoutAndReviewBox book={book} currentLoansCount={currentLoansCount}
             isAuthenticated={authState?.isAuthenticated} isCheckedOut={isBookCheckedOut} hasUserLeftReview={hasUserLeftReview}
             checkoutBookHandler={checkoutBookHandler} postReviewHandler={postReviewHandler} />
         </div>
@@ -132,7 +130,7 @@ const BookCheckoutPage = () => {
             <StarReview rating={totalStars} size={32} />
           </div>
         </div>
-        <CheckoutAndReviewBox book={book} mobile={false} currentLoansCount={currentLoansCount}
+        <CheckoutAndReviewBoxMobile book={book} currentLoansCount={currentLoansCount}
           isAuthenticated={authState?.isAuthenticated} isCheckedOut={isBookCheckedOut} hasUserLeftReview={hasUserLeftReview}
           checkoutBookHandler={checkoutBookHandler} postReviewHandler={postReviewHandler} />
         <hr />
