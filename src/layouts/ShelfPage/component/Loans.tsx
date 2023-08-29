@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { returnBookApi, useGetCurrentLoans, renewBookApi } from "../../../api/useBooksApi"
-import SpinnerLoading from "../../Utils/SpinnerLoading"
+import SpinnerLoading from '../../Utils/SpinnerLoading'
 import React, {useState} from 'react'
 import LoansModal from "./LoansModal"
 import { useOktaAuth } from "@okta/okta-react"

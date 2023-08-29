@@ -261,11 +261,12 @@ export const useCurrentLoansCountApi = (props: { isBookCheckedOut: boolean }): u
         }
       }).then((response) => {
         setCurrentLoansCount(response.data);
+        setIsLoadingCurrentLoansCount(false);
       }).catch((error: any) => {
         setCurrentLoanCountHttpError(error.message);
+        setIsLoadingCurrentLoansCount(false);
       })
     }
-    setIsLoadingCurrentLoansCount(false);
   }, [authState, props.isBookCheckedOut])
 
   return { currentLoansCount, isLoadingCurrentLoansCount, currentLoanCountHttpError }
@@ -286,11 +287,12 @@ export const useIsBookCheckout = (props: isBookCheckoutProps): useIsBookCheckedO
         }
       }).then((response) => {
         props.setIsBookCheckedOut(response.data);
+        setIsLoadingIsBookCheckedOut(false);
       }).catch((error) => {
         setIsBookCheckedOutHttpError(error.message);
+        setIsLoadingIsBookCheckedOut(false);
       })
     }
-    setIsLoadingIsBookCheckedOut(false);
   }, [authState])
   return { isLoadingIsBookCheckedOut, isBookCheckedOutHttpError }
 }
@@ -316,7 +318,6 @@ export const useHasUserLeftReview = (props: hasUserLeftReviewProps): useHasUserL
         setIsLoadingHasUserLeftReview(false);
       })
     }
-    setIsLoadingHasUserLeftReview(false);
   }, [])
 
   return { isLoadingHasUserLeftReview, isLoadingHasUserLeftReviewHttpError }
@@ -380,7 +381,6 @@ export const useGetCurrentLoans = (props: {checkout: boolean}): useGetCurrentLoa
           setIsLoadingShelfcurrentLoans(false);
         })
     }
-    setIsLoadingShelfcurrentLoans(false);
     window.scrollTo(0, 0);
   }, [authState, props.checkout])
 

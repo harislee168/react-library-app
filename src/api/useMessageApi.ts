@@ -112,7 +112,7 @@ const useMessageApi = (props: useMessageApiProps): useMessageApiReturnType => {
           setIsLoadingMessage(false);
         })
     }
-    setIsLoadingMessage(false);
+
     window.scroll(0, 0);
   }, [authState, props.currentPage])
   return { messages, isLoadingMessage, httpErrorMessage, returnTotalPages }

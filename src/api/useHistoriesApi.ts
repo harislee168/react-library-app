@@ -54,7 +54,6 @@ const useHistoriesApi = (props: useHistoriesApiProps): useHistoriesApiReturnType
           setIsLoadingHistory(false);
         })
     }
-    setIsLoadingHistory(false);
     window.scroll(0,0);
   }, [authState, props.currentPage])
 
